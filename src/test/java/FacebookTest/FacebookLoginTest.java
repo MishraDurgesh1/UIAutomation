@@ -9,6 +9,7 @@ public class FacebookLoginTest  extends LoginFb {
     @Test(priority = '1')
     public static void loginFacebook(){
 
+        openBrowser("");
         openFacebook();
         enterEmail("");
         enterPassword("");
@@ -18,6 +19,7 @@ public class FacebookLoginTest  extends LoginFb {
 
     @Test(priority = '2')
     public static void verifyUrlFacebook() throws InterruptedException {
+        openBrowser("");
         openFacebook();
         getUrl();
         Assert.assertEquals("",getUrl());
@@ -27,6 +29,7 @@ public class FacebookLoginTest  extends LoginFb {
     @Test(priority = '3')
     public static void verifyTitleFacebook(){
 
+        openBrowser("");
         openFacebook();
         getTitle();
         Assert.assertEquals("",getTitle());
