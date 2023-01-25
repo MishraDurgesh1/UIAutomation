@@ -9,7 +9,7 @@ public class FacebookLoginTest  extends LoginFb {
     @Test(priority = '1')
     public static void loginFacebook(){
 
-        openBrowser("");
+
         openFacebook();
         enterEmail("");
         enterPassword("");
