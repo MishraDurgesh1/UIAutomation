@@ -18,9 +18,10 @@ public class FacebookLoginTest  extends LoginFb {
 
     @Test(priority = '2')
     public static void verifyUrlFacebook() throws InterruptedException {
+
         openFacebook();
         getUrl();
-        Assert.assertEquals("",getUrl());
+        Assert.assertEquals("https://www.facebook.com/",getUrl());
         closeBrowser();
     }
 
@@ -29,7 +30,7 @@ public class FacebookLoginTest  extends LoginFb {
 
         openFacebook();
         getTitle();
-        Assert.assertEquals("",getTitle());
+        Assert.assertEquals("Facebook – log in or sign up",getTitle());
         closeBrowser();
     }
 

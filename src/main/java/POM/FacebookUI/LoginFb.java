@@ -5,8 +5,9 @@ import org.openqa.selenium.By;
 
 public class LoginFb extends Utility {
 
+
     public static void openFacebook(){
-        driver.get("https://www.facebook.com/");
+        openBrowser("https://www.facebook.com/");
     }
     public static void enterEmail(String email){
         driver.findElement(By.id("email")).sendKeys(email);
@@ -17,6 +18,6 @@ public class LoginFb extends Utility {
     }
 
     public static void clickOnLogin(){
-        driver.findElement(By.id("u_0_5_hY")).click();
+        driver.findElement(By.xpath("//*[@name='login']")).click();
     }
 }
