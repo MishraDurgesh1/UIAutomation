@@ -42,6 +42,11 @@
         <artifactId>poi-ooxml</artifactId>
         <version>5.2.3</version>
     </dependency>
+    <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>AUTOMATION</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
 
 </dependencies>
 
