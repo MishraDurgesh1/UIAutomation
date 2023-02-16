@@ -11,9 +11,9 @@ public class OpenMyntraTest extends OpenMyntra {
         Myntra();
         SearchShirt();
         ShirtsMens();
-        Assert.assertEquals("Rs. 298 To Rs. 6474",driver.findElement(By.xpath("(//div[@class=\"filter-summary-filter\"])[1]")).getText());
-        Assert.assertEquals("Rs. 6474 To Rs. 12650",driver.findElement(By.xpath("(//div[@class=\"filter-summary-filter\"])[2]")).getText());
-        Assert.assertEquals("Rs. 12650 To Rs. 18826",driver.findElement(By.xpath("(//div[@class=\"filter-summary-filter\"])[3]")).getText());
-        Assert.assertEquals("CLEAR ALL",driver.findElement(By.xpath("//span[@class=\"header-clearAllBtn\"]")).getText());
+       Assert.assertEquals("Rs. 339 To Rs. 6504",driver.findElement(By.xpath("(//div[@class=\"filter-summary-filter\"])[1]")).getText());
+       Assert.assertEquals("Rs. 6504 To Rs. 12669",driver.findElement(By.xpath("(//div[@class=\"filter-summary-filter\"])[2]")).getText());
+       Assert.assertEquals("Rs. 12669 To Rs. 18834",driver.findElement(By.xpath("(//div[@class=\"filter-summary-filter\"])[3]")).getText());
+       Assert.assertEquals("CLEAR ALL",driver.findElement(By.xpath("//span[@class=\"header-clearAllBtn\"]")).getText());
     }
 }
