@@ -10,7 +10,7 @@ public class FacebookLoginTest  extends LoginFb {
     public static void loginFacebook(){
 
         openFacebook();
-        enterEmail("");
+        enterEmail("mitali@gmail.com");
         enterPassword("");
         clickOnLogin();
         closeBrowser();

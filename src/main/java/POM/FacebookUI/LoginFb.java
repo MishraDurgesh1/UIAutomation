@@ -21,5 +21,6 @@ public class LoginFb extends Utility{
 
     public static void clickOnLogin(){
         driver.findElement(By.xpath("//*[@name='login']")).click();
+
     }
 }
