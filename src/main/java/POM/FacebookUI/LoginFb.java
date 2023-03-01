@@ -9,7 +9,7 @@ public class LoginFb extends Utility{
 
 
     public static void openFacebook(){
-        openBrowser("https://www.facebook.com/");
+        openBrowser("https://www.facebook.com/","Chrome");
     }
     public static void enterEmail(String email){
         driver.findElement(By.id("email")).sendKeys(email);

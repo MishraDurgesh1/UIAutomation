@@ -12,6 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.File;
@@ -37,11 +38,25 @@ public class Utility {
     public static WebDriver driver;
 
     //Open Browser Method:-
-    public static void openBrowser(String url){
-        WebDriverManager.chromedriver().setup();
-        driver=new ChromeDriver();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("disable-popup-blocking");
+    public static void openBrowser(String url,String BrowserName){
+
+
+        if (BrowserName.equalsIgnoreCase("Chrome")){
+            WebDriverManager.chromedriver().setup();
+            driver=new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("disable-popup-blocking");
+            options.getCapability("--incognito");
+        } else if (BrowserName.equalsIgnoreCase("Edge")) {
+            WebDriverManager.edgedriver().setup();
+            driver=new EdgeDriver();
+        } else if (BrowserName.equalsIgnoreCase("Mozila")) {
+            WebDriverManager.firefoxdriver().setup();
+            driver=new FirefoxDriver();
+        }
+        else {
+            System.out.println("You Entered invalid Browser!!!");
+        }
         driver.get(url);
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
@@ -60,7 +75,7 @@ public class Utility {
 
     //Window Scroll Methods:-
     public static void windowScroll(){
-        WebDriver driver = new FirefoxDriver();
+        WebDriver driver = new ChromeDriver();
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("window.scrollBy(0,250)");
     }
