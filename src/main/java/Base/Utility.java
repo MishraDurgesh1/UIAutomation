@@ -194,7 +194,7 @@ public class Utility {
         //jsExecutor.executeScript("arguments[0].click();", element);
         
        //Click on the element and wait using JavaScript:-
-        jsExecutor.executeScript("arguments[0].click();", wait.until(ExpectedConditions.elementToBeClickable(element));
+        jsExecutor.executeScript("arguments[0].click();", wait.until(ExpectedConditions.elementToBeClickable(element)));
     }
            
      //Handle dropdown:-
