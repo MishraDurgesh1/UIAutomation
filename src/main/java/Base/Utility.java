@@ -181,7 +181,9 @@ public class Utility {
         JavascriptExecutor js=(JavascriptExecutor) driver;
         js.executeScript("arguments[0].style.border = '8px solid red' ",webElement);
     }
-    public static void explicitWait(WebElement element){
+    
+    //Explicit wait and click on Web Element by Javascript:-
+    public static void waitAndClickByJsExecutor(WebElement element){
         //Explicit wait:-
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
@@ -194,7 +196,8 @@ public class Utility {
        //Click on the element and wait using JavaScript:-
         jsExecutor.executeScript("arguments[0].click();", wait.until(ExpectedConditions.elementToBeClickable(element));
     }
-                                 
+           
+     //Handle dropdown:-
      public static void dropDownClick(WebElement dropdownElements){
          //Store all elements of drop-down in a list:-
          
@@ -206,4 +209,37 @@ public class Utility {
             list.get(i).click();
      }
      }
+                                 
+    //Actions Class:-
+      public static void action(WebElement element){
+      Actions act=new Actions(driver);
+          //For double click-
+          act.doubleClick(element).perform();
+          //For single click-
+          act.click().perform();
+          //for right click-
+          act.contextClick().perform();
+          //For sendkeys-
+          act.sendKeys(Keys.ENTER).perform();
+          act.sendKeys("").perform();
+          act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
+          
+      }
+        
+        //Desktop Automation:-{you need to install AUTO-IT and AutoIT Editor}
+ //Code on Auto IT Editor:-
+// ControlFocus("Open","","Edit1")
+// Sleep(3000)
+// ControlSetText("Open","","Edit1","D:\comed.csv")
+// Sleep(3000)
+// ControlClick("Open","","Button1")
+                                 
+        public static void filUpload(WebElement element){
+            
+            element.click();
+            Runtime.getRuntime().exec("File_Path");
+            Thread.sleep(5000);
+            
+        }                         
+       
 }
