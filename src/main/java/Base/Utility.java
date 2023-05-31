@@ -181,5 +181,29 @@ public class Utility {
         JavascriptExecutor js=(JavascriptExecutor) driver;
         js.executeScript("arguments[0].style.border = '8px solid red' ",webElement);
     }
+    public static void explicitWait(WebElement element){
+        //Explicit wait:-
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
+        // Create a JavascriptExecutor instance:-
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+
+        // Click on the element using JavaScript:-
+        //jsExecutor.executeScript("arguments[0].click();", element);
+        
+       //Click on the element and wait using JavaScript:-
+        jsExecutor.executeScript("arguments[0].click();", wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+                                 
+     public static void dropDownClick(WebElement dropdownElements){
+         //Store all elements of drop-down in a list:-
+         
+         List<WebElement> list=dropdownElements;
+         
+         //loop try to click on each element of list:-
+         
+         for (int i=1;i<list.size;i++){
+            list.get(i).click();
+     }
+     }
 }
