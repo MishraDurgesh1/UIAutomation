@@ -1,26 +1,37 @@
 package Page;
 
 import POM.WebDriverFactory;
-import Utils.Utility;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
+import java.io.FileInputStream;
 import java.util.Properties;
 
 public class BaseTest {
     public static Properties prop = new Properties();
-    protected WebDriver driver;
+    public WebDriver driver;
 
-    @BeforeMethod
-    public void openBrowser(){
-       driver = WebDriverFactory.getDriver(prop.getProperty("browser"));
+    @BeforeClass(alwaysRun = true)
+    public void openBrowser() {
+        try {
+            FileInputStream fis = new FileInputStream("src/main/java/resource/config.properties");
+            prop.load(fis);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to load config.properties file");
+        }
+
+        driver = WebDriverFactory.getDriver(prop.getProperty("browser"));
         driver.get(prop.getProperty("url"));
     }
-    @AfterMethod
-    public void closeBrowser(){
-        if(driver!=null){
+
+    @AfterClass(alwaysRun = true)
+    public void closeBrowser() {
+        if (driver != null) {
             driver.close();
+            driver.quit();
         }
     }
 }

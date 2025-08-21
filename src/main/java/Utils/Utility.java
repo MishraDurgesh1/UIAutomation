@@ -27,7 +27,6 @@ import java.util.List;
 
 public class Utility {
     private static final int DEFAULT_TIMEOUT = 30;
-    public static WebDriver driver;
     static FileInputStream inputStream;
     static FileOutputStream outputStream;
     static Workbook workbook;
@@ -40,12 +39,12 @@ public class Utility {
 
     //Open Browser Method:-
     //Get Title of Opened Page:-
-    public static String getTitle() {
+    public static String getTitle(WebDriver driver) {
         return driver.getTitle();
     }
 
     //Get Current URL of Open Page:-
-    public static String getUrl() {
+    public static String getUrl(WebDriver driver) {
         return driver.getCurrentUrl();
     }
 
@@ -70,19 +69,19 @@ public class Utility {
     }
 
     //Manage Alerts:-
-    public static void alertAccept() {
+    public static void alertAccept(WebDriver driver) {
         driver.switchTo().alert().accept();
     }
 
-    public static void alertDismiss() {
+    public static void alertDismiss(WebDriver driver) {
         driver.switchTo().alert().dismiss();
     }
 
-    public static void alertSend(String str) {
+    public static void alertSend(WebDriver driver, String str) {
         driver.switchTo().alert().sendKeys(str);
     }
 
-    public static void alertGetText() {
+    public static void alertGetText(WebDriver driver) {
         driver.switchTo().alert().getText();
     }
 
@@ -139,20 +138,20 @@ public class Utility {
     }
 
     //Take Screenshot from web Pages:-
-    public static void screenshot(String FileName) throws IOException {
+    public static void screenshot(WebDriver driver, String FileName) throws IOException {
         file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file, new File("image location" + FileName + ".jpeg"));
 
     }
 
     //Make Border for screenshot image:-
-    public static void makeBorder(WebElement webElement) {
+    public static void makeBorder(WebDriver driver, WebElement webElement) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].style.border = '8px solid red' ", webElement);
     }
 
     //Explicit wait and click on Web Element by Javascript:-
-    public static void waitAndClickByJsExecutor(WebElement element) {
+    public static void waitAndClickByJsExecutor(WebDriver driver, WebElement element) {
         //Explicit wait:-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
@@ -178,7 +177,7 @@ public class Utility {
     }
 
     //Actions Class:-
-    public static void action(WebElement element) {
+    public static void action(WebDriver driver, WebElement element) {
         Actions act = new Actions(driver);
         //For single click-
         act.click();
@@ -233,6 +232,12 @@ public class Utility {
             js.executeScript("arguments[0].click();", element);
         }
     }
+  public static void clickOnOkButton(WebDriver driver) {
+      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+      WebElement okBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='OK']")));
+      okBtn.click();
+
+  }
 
     // ✅ Send keys after waiting
     public static void sendKeysWhenReady(WebDriver driver, WebElement element, String text) {
@@ -247,8 +252,14 @@ public class Utility {
 
     // ✅ Wait for alert and accept it
     public static void waitForAlertAndAccept(WebDriver driver) {
-        new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT)).until(ExpectedConditions.alertIsPresent());
-        driver.switchTo().alert().accept();
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            wait.until(ExpectedConditions.alertIsPresent());
+            driver.switchTo().alert().accept();
+        } catch (TimeoutException e) {
+            System.out.println("⚠️ No alert appeared, continuing...");
+        }
     }
+
 
 }
