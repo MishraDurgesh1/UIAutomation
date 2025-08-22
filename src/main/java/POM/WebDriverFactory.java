@@ -18,6 +18,7 @@ public class WebDriverFactory {
                 options.addArguments("--no-sandbox");
                 options.addArguments("--disable-dev-shm-usage");
                 options.addArguments("--incognito");
+                options.addArguments("--accept-all-cookies");
                 driver = new ChromeDriver(options);
                 break;
             case "Edge":

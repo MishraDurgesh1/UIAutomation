@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AmazonPage extends Utility {
+public class SauceDemoPage extends Utility {
     public WebDriver driver;
     @FindBy(xpath = "//input[@id=\"user-name\"]")
     WebElement usernameField;
@@ -38,7 +38,7 @@ public class AmazonPage extends Utility {
     @FindBy(xpath = "//h2[@class=\"complete-header\"]")
     WebElement completeHeader;
 
-    public AmazonPage(WebDriver driver) {
+    public SauceDemoPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
