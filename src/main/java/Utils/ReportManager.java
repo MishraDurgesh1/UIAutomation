@@ -4,10 +4,6 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import lombok.extern.slf4j.Slf4j;
-
-import java.sql.Time;
-import java.util.Date;
-
 @Slf4j
 public class ReportManager {
     private static ExtentReports extent;

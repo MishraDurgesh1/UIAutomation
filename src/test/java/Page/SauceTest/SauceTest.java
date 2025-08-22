@@ -1,6 +1,6 @@
-package Page.AmazonTest;
+package Page.SauceTest;
 
-import POM.page.AmazonPage;
+import POM.page.SauceDemoPage;
 import Page.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class AmazonTest extends BaseTest {
+public class SauceTest extends BaseTest {
 
     @BeforeClass(alwaysRun = true)
     public void loginBeforeEachTest() {
@@ -21,20 +21,20 @@ public class AmazonTest extends BaseTest {
             throw new RuntimeException(e);
         }
 
-        AmazonPage amazonPage = new AmazonPage(driver);
-        amazonPage.login(prop.getProperty("username"), prop.getProperty("password"));
+        SauceDemoPage sauceDemoPage = new SauceDemoPage(driver);
+        sauceDemoPage.login(prop.getProperty("username"), prop.getProperty("password"));
     }
 
     @Test(priority = 1)
     public void purchase() throws InterruptedException {
-        AmazonPage amazonPage = new AmazonPage(driver);
-        amazonPage.selectProduct();
+        SauceDemoPage sauceDemoPage = new SauceDemoPage(driver);
+        sauceDemoPage.selectProduct();
         Thread.sleep(5000);
     }
     @Test(priority = 2,dependsOnMethods = "purchase")
     public void verifyHeader() {
-        AmazonPage amazonPage = new AmazonPage(driver);
-        System.out.println(amazonPage.verifyHeader());
-        Assert.assertEquals(amazonPage.verifyHeader(), "Thank you for your order!");
+        SauceDemoPage sauceDemoPage = new SauceDemoPage(driver);
+        System.out.println(sauceDemoPage.verifyHeader());
+        Assert.assertEquals(sauceDemoPage.verifyHeader(), "Thank you for your order!");
     }
 }

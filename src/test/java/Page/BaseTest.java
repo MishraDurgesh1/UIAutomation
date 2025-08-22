@@ -6,6 +6,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import java.io.FileInputStream;
+import java.time.Duration;
 import java.util.Properties;
 
 import static Utils.Utility.simpleWait;
@@ -25,6 +26,8 @@ public class BaseTest {
 
         driver = WebDriverFactory.getDriver(prop.getProperty("browser"));
         driver.get(prop.getProperty("url"));
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 
     @AfterClass(alwaysRun = true)
