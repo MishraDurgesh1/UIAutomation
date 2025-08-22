@@ -1,5 +1,6 @@
-runners\TestRunner.class
 stepdefinitions\SauceSteps.class
+stepdefinitions\Hooks.class
+listeners\TestListener.class
+runners\TestRunner.class
 Page\AmazonTest\AmazonTest.class
 Page\BaseTest.class
-stepdefinitions\Hooks.class

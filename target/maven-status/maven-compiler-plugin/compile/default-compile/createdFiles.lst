@@ -1,3 +1,4 @@
 POM\WebDriverFactory.class
-POM\page\AmazonPage.class
+Utils\ReportManager.class
 Utils\Utility.class
+POM\page\AmazonPage.class
