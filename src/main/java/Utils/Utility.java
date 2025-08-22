@@ -260,6 +260,15 @@ public class Utility {
             System.out.println("⚠️ No alert appeared, continuing...");
         }
     }
+    public static void simpleWait(long seconds) {
+        try {
+            Thread.sleep(3000);
+        }
+        catch (Exception e){
+            System.out.println("⚠️ Wait or close");
+        }
+
+    }
 
 
 }

@@ -3,10 +3,10 @@ package Page.AmazonTest;
 import POM.page.AmazonPage;
 import Page.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class AmazonTest extends BaseTest {
