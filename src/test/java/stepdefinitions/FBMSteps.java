@@ -8,6 +8,7 @@ public class FBMSteps extends BaseTest {
     @Given("User clicks on Borrow Button")
     public void user_clicks_on_borrow_button() {
         FBMPage fBMPage = new FBMPage(driver);
+        fBMPage.clickOnCookies();
         fBMPage.clickOnBorrowButton();
     }
     @When("User clicks on Credit Cards Icon")

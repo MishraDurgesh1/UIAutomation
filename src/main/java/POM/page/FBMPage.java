@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class FBMPage extends Utility {
     public WebDriver driver;
+    @FindBy(xpath = "//button[contains(text(),'Accept all cookies')]")
+    WebElement acceptCookies;
     @FindBy(xpath="(//p[@class=\"atom text--paragraph  type--normal  font--align-Mcenter          \" ])[4]")
     WebElement borrowButton;
 
@@ -20,6 +22,10 @@ public class FBMPage extends Utility {
     public FBMPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public void clickOnCookies(){
+        clickWhenReady(driver,acceptCookies);
     }
 
     public void clickOnBorrowButton(){
